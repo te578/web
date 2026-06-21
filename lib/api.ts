@@ -1,17 +1,16 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-export async function apiPost(path: string, body: object) {
-  const res = await fetch(`${BASE_URL}${path}`, {
+export async function apiPost(url: string, body: object) {
+  const response = await fetch(BASE_URL + url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   })
-  return res.json()
+
+  if (!response.ok) {
+    throw new Error("リクエストに失敗しました")
+  }
+
+  return response.json()
 }
 
-export async function apiGet(path: string) {
-  const res = await fetch(`${BASE_URL}${path}`, {
-    headers: { "Content-Type": "application/json" },
-  })
-  return res.json()
-}
