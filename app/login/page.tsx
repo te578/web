@@ -50,7 +50,7 @@ export default function LoginPage() {
           ログイン
         </button>
         <div className="flex justify-between">
-        <a href="/forgot-password" className="text-blue-500 underline">
+        <a href="/reset" className="text-blue-500 underline">
           <p>パスワードを忘れた場合</p>
         </a>
         <a href="/signup" className=" text-blue-500 underline">
