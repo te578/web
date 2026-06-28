@@ -43,10 +43,16 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <form action={handleSubmit} noValidate className="flex flex-col gap-4 bg-white p-8 rounded shadow-md w-96 rounded-lg">
         <h1 className="text-2xl font-bold mb-4">ログイン</h1>
-        <input type="email" name="email" placeholder="メールアドレス" className="mb-2" />
-        <input type="password" name="password" placeholder="パスワード" />
+        <div className="flex flex-col gap-1">
+          <p>メールアドレス</p>
+          <input type="email" name="email" className="mb-2 border rounded" />
+        </div>
+        <div className="flex flex-col gap-1">
+          <p>パスワード</p>
+          <input type="password" name="password" className="border rounded"/>
+        </div>
         {error && <p className="text-red-500 text-sm">{error}</p>}
-        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10">
           ログイン
         </button>
         <div className="flex justify-between">

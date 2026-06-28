@@ -7,10 +7,7 @@ export async function apiPost(url: string, body: object) {
     body: JSON.stringify(body),
   })
 
-  if (!response.ok) {
-    throw new Error("リクエストに失敗しました")
-  }
-
-  return response.json()
+  
+  return response;
 }
 
