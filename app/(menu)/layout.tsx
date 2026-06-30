@@ -18,7 +18,7 @@ export default function MenuLayout({
     const inactiveClass = "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100";
 
     return (
-        <div className="flex min-h-screen flex-col">
+        <div className="flex h-screen flex-col">
             <header className="bg-gray-800 text-white p-4">
                 <h1>My App</h1>
             </header>
@@ -28,8 +28,8 @@ export default function MenuLayout({
                     <ul className="flex flex-col gap-1 mt-4 bg-green-100">
                         <li>
                             <Link
-                                href="/bashboard"
-                                className={pathname === "/bashboard" ? activeClass : inactiveClass}
+                                href="/dashboard"
+                                className={pathname === "/dashboard" ? activeClass : inactiveClass}
                             >
                                 <LayoutDashboard size={20} />
                                 ダッシュボード
