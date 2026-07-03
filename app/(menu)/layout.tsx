@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Settings } from "lucide-react";
+import { LayoutDashboard, Settings, User } from "lucide-react";
 
 export default function MenuLayout({
     children,
@@ -20,7 +20,17 @@ export default function MenuLayout({
     return (
         <div className="flex h-screen flex-col">
             <header className="bg-gray-800 text-white p-4">
-                <h1>My App</h1>
+                <div className="flex items-center justify-between">
+                    <h1>My App</h1>
+                    <div className="flex items-center gap-4">
+                    <a href="/user" className="text-white hover:text-gray-300">
+                        <User size={30} />
+                    </a>
+                    <a href="/login" className="text-white hover:text-gray-300">
+                        Logout
+                    </a>
+                    </div>
+                </div>
             </header>
 
             <div className="flex flex-1">
@@ -37,6 +47,51 @@ export default function MenuLayout({
                         </li>
                         <li>
                             <Link
+                                href="/user"
+                                className={pathname === "/user" ? activeClass : inactiveClass}
+                            >
+                                <User size={20} />
+                                タスク調整
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/telephone"
+                                className={pathname === "/telephone" ? activeClass : inactiveClass}
+                            >
+                                <Settings size={20} />
+                                通話
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/file-sharing"
+                                className={pathname === "/file-sharing" ? activeClass : inactiveClass}
+                            >
+                                <Settings size={20} />
+                                ファイル共有
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/team-up"
+                                className={pathname === "/team-up" ? activeClass : inactiveClass}
+                            >
+                                <Settings size={20} />
+                                チームアップ一覧
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/message"
+                                className={pathname === "/message" ? activeClass : inactiveClass}
+                            >
+                                <Settings size={20} />
+                                メッセージ
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
                                 href="/settings"
                                 className={pathname === "/settings" ? activeClass : inactiveClass}
                             >
@@ -44,6 +99,7 @@ export default function MenuLayout({
                                 設定
                             </Link>
                         </li>
+
                     </ul>
                     <p className="text-sm text-gray-500 mt-auto">
                         © 2026 My App. All rights reserved.

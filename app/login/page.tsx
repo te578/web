@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { apiPost } from "@/lib/api"
+import { setURL } from "@/lib/api"
 
 type LoginRequest = {
   email: string
@@ -15,7 +16,8 @@ export default function LoginPage() {
   async function handleSubmit(formData: FormData) {
     const email = formData.get("email") as string
     const password = formData.get("password") as string
-    
+    setURL();
+
     if (!email || !password) {
       setError("メールアドレスとパスワードを入力してください")
       return
