@@ -20,6 +20,18 @@ export function setURL() {
 }
 
 
+export async function apiGet(url: string) {
+  const response = await fetch(API_URL + url, {
+    method: "GET",
+    headers: { "AuthToken": sessionStorage.getItem("AuthToken") ?? "" }
+  });
+
+  return response;
+}
+
+
+
+
 export async function apiPost(url: string, body: object) {
   let response;
 

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { apiPost } from "@/lib/api"
 import { setURL } from "@/lib/api"
 
@@ -10,7 +11,7 @@ type LoginRequest = {
 }
 
 export default function LoginPage() {
-  const [success, setSuccess] = useState(false)
+  const router = useRouter()
   const [error, setError] = useState("")
 
   async function handleSubmit(formData: FormData) {
@@ -27,18 +28,10 @@ export default function LoginPage() {
 
     try {
       await apiPost("/auth/login", body)
-      setSuccess(true)
+      router.push("/dashboard")
     } catch {
       setError("ログインに失敗しました")
     }
-  }
-
-  if (success) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <p>ログイン成功</p>
-      </div>
-    )
   }
 
   return (
