@@ -19,12 +19,27 @@ export function setURL() {
   }
 }
 
+
 export async function apiPost(url: string, body: object) {
-  const response = await fetch(API_URL + url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  let response;
+
+  if (!((url === "login") || (url === "reset") || (url === "register"))) {
+    response = await fetch(API_URL + url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json",
+                 "AuthToken": sessionStorage.getItem("AuthToken") ?? ""
+       },
+      body: JSON.stringify(body)
+    });
+  }else {
+    response = await fetch(API_URL + url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json",
+                 "AuthToken": sessionStorage.getItem("AuthToken") ?? ""
+       },
+      body: JSON.stringify(body)
+    });
+  }
 
   return response;
 }
