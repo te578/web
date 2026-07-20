@@ -14,14 +14,12 @@ export default function UserPage() {
 
     // 画面表示時（マウント時）に1回だけAPIを呼ぶ
     useEffect(() => {
-        async function fetchUser() {
-            const response = await apiGet("/user/me")
-            const data = await response.json()
-            setUser(data)
-        }
-
-        fetchUser()
+        const response = apiGet("/user")
+        response.then(res => res.json())
+                .then(data => setUser(data))
+                .catch(err => console.error("ユーザー情報の取得に失敗しました:", err))
     }, [])
+
 
     if (!user) {
         return (
