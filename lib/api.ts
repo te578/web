@@ -5,9 +5,9 @@ export function setURL() {
 
   if (hostname === "localhost") {
     // ローカル開発環境
-    API_URL = "http://localhost:3000";
+    API_URL = "http://localhost:8080/api";
   } else if (hostname === "jpro.localhost") {
-    API_URL = "http://localhost:3000";
+    API_URL = "http://localhost:8080/api";
   } else if (hostname === "jpro.vercel.app") {
     if (!process.env.NEXT_PUBLIC_VERCEL_API_URL) throw new Error("NEXT_PUBLIC_VERCEL_API_URL が設定されていません");
     API_URL = process.env.NEXT_PUBLIC_VERCEL_API_URL;
@@ -35,7 +35,7 @@ export async function apiGet(url: string) {
 export async function apiPost(url: string, body: object) {
   let response;
 
-  if (!((url === "login") || (url === "reset") || (url === "register"))) {
+  if (!((url === "/auth/login") || (url === "/auth/reset") || (url === "/auth/register"))) {
     response = await fetch(API_URL + url, {
       method: "POST",
       headers: { "Content-Type": "application/json",
@@ -47,7 +47,6 @@ export async function apiPost(url: string, body: object) {
     response = await fetch(API_URL + url, {
       method: "POST",
       headers: { "Content-Type": "application/json",
-                 "AuthToken": sessionStorage.getItem("AuthToken") ?? ""
        },
       body: JSON.stringify(body)
     });

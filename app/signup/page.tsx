@@ -3,6 +3,7 @@
 import React from "react";
 import { useState } from "react";
 import { apiPost }  from "@/lib/api";
+import { setURL } from "@/lib/api";
 
 type SignupReq = {
     username: string;
@@ -20,6 +21,7 @@ export default function SignupPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
 
     async function handleSubmit(formData: FormData) {
+        setURL();
         const username = formData.get("username") as string;
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
@@ -49,7 +51,7 @@ export default function SignupPage() {
         const body: SignupReq = { username, email, password, confirmPassword };
 
         try {
-            const response = await apiPost("auth/signup", body);
+            const response = await apiPost("/auth/register", body);
             
             setSuccess(true);
 
