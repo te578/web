@@ -27,8 +27,12 @@ export default function LoginPage() {
     const body: LoginRequest = { email, password }
 
     try {
-      await apiPost("/auth/login", body)
-      router.push("/dashboard")
+      const response = await apiPost("/auth/login", body)
+      const data = await response.json();
+      console.log(data);
+      
+      // Handle successful login (e.g., store token, redirect)
+
     } catch {
       setError("ログインに失敗しました")
     }
