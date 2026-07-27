@@ -35,7 +35,7 @@ export async function apiGet(url: string) {
 export async function apiPost(url: string, body: object) {
   let response;
 
-  if (!((url === "login") || (url === "reset") || (url === "register"))) {
+  if (!((url === "/auth/login") || (url === "/auth/reset") || (url === "/auth/register"))) {
     response = await fetch(API_URL + url, {
       method: "POST",
       headers: { "Content-Type": "application/json",
@@ -47,7 +47,6 @@ export async function apiPost(url: string, body: object) {
     response = await fetch(API_URL + url, {
       method: "POST",
       headers: { "Content-Type": "application/json",
-                 "AuthToken": sessionStorage.getItem("AuthToken") ?? ""
        },
       body: JSON.stringify(body)
     });

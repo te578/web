@@ -29,7 +29,18 @@ export default function LoginPage() {
     try {
       const response = await apiPost("/auth/login", body)
       const data = await response.json();
-      console.log(data);
+      if (response.ok) {
+        // ログイン成功時の処理
+        sessionStorage.setItem("AuthToken", data.token);
+        router.push("/dashboard"); // ログイン後にリダイレクトするページに変更してください
+
+      } else if (response.status === 401) {
+        setError("メールアドレスまたはパスワードが正しくありません")
+      
+      } else {
+        setError("ログインに失敗しました")
+        
+      }
       
       // Handle successful login (e.g., store token, redirect)
 
