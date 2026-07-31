@@ -30,20 +30,16 @@ export default function SignupPage() {
         if(!username){
             setError("ユーザー名を入力してください");
             return;
-        }
-        if(!email){
+        }if(!email){
             setError("メールアドレスを入力してください");
             return;
-        }
-        if(!password){
+        }if(!password){
             setError("パスワードリセットを入力してください");
             return;
-        }
-        if(!confirmPassword){
+        }if(!confirmPassword){
             setError("確認用パスワードを入力してください");
             return;
-        }
-        if(password !== confirmPassword){
+        }if(password !== confirmPassword){
             setError("パスワードと確認用パスワードが一致しまsせん");
             return;
         }
