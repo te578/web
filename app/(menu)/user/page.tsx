@@ -39,8 +39,10 @@ export default function UserPage() {
         // }
         // fetchUser()
 
-        // 画面の見た目を確認するための仮データ
-        setUser({ name: "テストユーザー", email: "test@example.com", password: "" })
+        // 画面の見た目を確認するための仮データ（読み込み中の表示を確認するため10秒待ってからセットする）
+        setTimeout(() => {
+            setUser({ name: "テストユーザー", email: "test@example.com", password: "" })
+        }, 10000)
     }, [])
 
     if (data === null) {
