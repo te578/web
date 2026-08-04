@@ -2,8 +2,11 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { apiPost } from "@/lib/api"
-import { setURL } from "@/lib/api"
+import Link from "next/link"
+import { apiPost, setURL } from "@/lib/api"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
 
 type LoginRequest = {
   email: string
@@ -36,46 +39,45 @@ export default function LoginPage() {
 
       } else if (response.status === 401) {
         setError("メールアドレスまたはパスワードが正しくありません")
-      
+
       } else {
         setError("ログインに失敗しました")
-        
       }
-      
-      // Handle successful login (e.g., store token, redirect)
-
     } catch {
       setError("ログインに失敗しました")
     }
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form action={handleSubmit} noValidate className="flex flex-col gap-4 bg-white p-8 rounded shadow-md w-96 rounded-lg">
-        <h1 className="text-2xl font-bold mb-4">ログイン</h1>
-        <div className="flex flex-col gap-1">
-          <p>メールアドレス</p>
-          <input type="email" name="email" className="mb-2 border rounded" />
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg">
+        <div className="flex flex-col items-center mb-8">
+          <h2 className="text-3xl font-extrabold text-blue-600">My App</h2>
         </div>
-        <div className="flex flex-col gap-1">
-          <p>パスワード</p>
-          <input type="password" name="password" className="border rounded"/>
-        </div>
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10">
-          ログイン
-        </button>
-        <div className="flex justify-between">
-        <a href="/reset" className="text-blue-500 underline">
-          <p>パスワードを忘れた場合</p>
-        </a>
-        <a href="/signup" className=" text-blue-500 underline">
-          <p>新規登録</p>
-        </a>
-        </div>
-      </form>
+        <h1 className="text-lg font-bold text-center mb-6">ログイン</h1>
+        <form action={handleSubmit} noValidate className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="email">メールアドレス</Label>
+            <Input id="email" type="email" name="email" placeholder="you@example.com" className="bg-gray-100 h-10" />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="password">パスワード</Label>
+            <Input id="password" type="password" name="password" placeholder="••••••••" className="bg-gray-100 h-10" />
+          </div>
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+          <Button type="submit" className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white h-10">
+            ログイン
+          </Button>
+          <div className="flex justify-center gap-4 text-sm">
+            <Link href="/reset" className="text-gray-500 hover:underline">
+              パスワードを忘れた場合
+            </Link>
+            <Link href="/signup" className="text-gray-500 hover:underline">
+              新規登録
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   )
-
-  
 }

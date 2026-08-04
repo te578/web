@@ -9,7 +9,7 @@
 ## デモ・スクリーンショット
 
 - デモURL: [https://web-indol-three-20.vercel.app](https://web-indol-three-20.vercel.app)
-- デモURL(独自ドメイン): [https://sun.shima.me](https://sun.shima.me)
+- デモURL(独自ドメイン): [https://sun.te578.me](https://sun.te578.me)
 - バックエンド: [portfolio-backend](https://github.com/te578/portfolio-backend)
 
 <!-- 画面のスクリーンショットがあれば貼る -->

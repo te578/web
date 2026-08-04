@@ -42,7 +42,7 @@ export default function UserPage() {
         // 画面の見た目を確認するための仮データ（読み込み中の表示を確認するため10秒待ってからセットする）
         setTimeout(() => {
             setUser({ name: "テストユーザー", email: "test@example.com", password: "" })
-        }, 10000)
+        }, 5000)
     }, [])
 
     if (data === null) {
@@ -81,13 +81,20 @@ export default function UserPage() {
                 <p>クリックして画像を変更</p>
             </div>
             <div className="mt-6 border border-gray-200 rounded-lg p-6 w-full max-w-4xl bg-white">
-                <p>ユーザー名: {data.name}</p>
+                <p>ユーザー名:</p>
+                <p>{data.name}</p>
             </div>
-            <div className="mt-6 border border-gray-200 rounded-lg p-6 w-full max-w-4xl bg-white">
-                <p>メールアドレス: {data.email}</p>
+            <div className=" mt-6 border border-gray-200 rounded-lg p-6 w-full max-w-4xl bg-white">
+                <p>メールアドレス:</p>
+                <p>{data.email}</p>
             </div>
-                        <div className="mt-6 border border-gray-200 rounded-lg p-6 w-full max-w-4xl bg-white">
-                <p>パスワード: </p>
+            <div className="flex items-center gap-3 mt-6 border border-gray-200 rounded-lg p-6 w-full max-w-4xl bg-white">
+                <p>パスワード:</p>
+
+            </div>
+            <div className="flex items-center gap-3 mt-6 border border-gray-200 rounded-lg p-6 w-full max-w-4xl bg-white">
+                <p className= "text-red-500 text-lg font-bold">アカウント削除</p>
+                <p>{data.password}</p>
             </div>
         </div>
     )
