@@ -37,7 +37,11 @@ export default function ResetPage() {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-            <form action={handleSubmit} noValidate className="flex flex-col bg-white p-8 rounded shadow-md w-96">
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                handleSubmit(formData);
+            }} noValidate className="flex flex-col bg-white p-8 rounded shadow-md w-96">
                 <h1 className="text-2xl font-bold mb-15">パスワードリセット</h1>
                 <div className="flex flex-col gap-1 w-full">
                     <Label htmlFor="email">メールアドレス</Label>
