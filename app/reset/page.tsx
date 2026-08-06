@@ -31,7 +31,7 @@ export default function ResetPage() {
                 setError("パスワードリセットのメール送信に失敗しました")
                 alert("パスワードリセットのメール送信に失敗しました")
             } else {
-                setSuccess(true) // 1秒待つ（実際のAPI呼び出しの代わり）
+                setSuccess(true)
             }
 
         } finally {
