@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react"
 export function Loading() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen gap-3 text-gray-500">
-            <Loader2 className="animate-spin" size={32} />
+            <Loader2 className="animate-spin" size={60} />
             <p>読み込み中...</p>
         </div>
     )

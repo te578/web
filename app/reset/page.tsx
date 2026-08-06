@@ -9,14 +9,10 @@ type ResetRequest = {
     email: string;
 };
 
-// 指定したミリ秒だけ待つ（実際のAPI呼び出しの代わりに使うテスト用）
-function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 export default function ResetPage() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false); // 通信中かどうか
+    const [success, setSuccess] = useState(false); // 送信成功かどうか
 
     async function handleSubmit(formData: FormData) {
         const email = formData.get("email") as string;
@@ -29,15 +25,46 @@ export default function ResetPage() {
 
         setIsLoading(true); // 通信開始、ぐるぐる表示ON
         try {
-            await sleep(1000); // 1秒待つ（実際のAPI呼び出しの代わり）
+            const body: ResetRequest = { email };
+            const response = await apiPost("/auth/reset", body);
+            if (!response.ok){
+                setError("パスワードリセットのメール送信に失敗しました")
+                alert("パスワードリセットのメール送信に失敗しました")
+            } else {
+                setSuccess(true)
+            }
+
         } finally {
             setIsLoading(false); // 成功・失敗どちらでも、ここでぐるぐる表示OFF
         }
     }
 
+    if (isLoading) {
+        return (
+            <div>
+                <h1 className="text-2xl font-bold mb-4">パスワードリセット</h1>
+                <p>読み込み中...</p>
+            </div>
+        )
+    }
+
+    if (success) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen gap-3 text-gray-500" >
+                <h1 className="text-2xl font-bold mb-4">パスワードリセット</h1>
+                <p>パスワードリセットのメールを送信しました。</p>
+                <a href="/login" className="text-blue-500 hover:underline">ログインページへ</a>
+            </div>
+        )
+    }
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-            <form action={handleSubmit} noValidate className="flex flex-col bg-white p-8 rounded shadow-md w-96">
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                handleSubmit(formData);
+            }} noValidate className="flex flex-col bg-white p-8 rounded shadow-md w-96">
                 <h1 className="text-2xl font-bold mb-15">パスワードリセット</h1>
                 <div className="flex flex-col gap-1 w-full">
                     <Label htmlFor="email">メールアドレス</Label>
