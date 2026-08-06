@@ -9,11 +9,6 @@ type body = {
     email: string;
 };
 
-// 指定したミリ秒だけ待つ（実際のAPI呼び出しの代わりに使うテスト用）
-function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 export default function ResetPage() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false); // 通信中かどうか
