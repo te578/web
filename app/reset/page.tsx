@@ -5,7 +5,7 @@ import { useState } from "react"
 import { apiPost } from "@/lib/api"
 import { Loader2 } from "lucide-react"
 
-type body = {
+type ResetRequest = {
     email: string;
 };
 
@@ -25,7 +25,7 @@ export default function ResetPage() {
 
         setIsLoading(true); // 通信開始、ぐるぐる表示ON
         try {
-            const body: body = { email };
+            const body: ResetRequest = { email };
             const response = await apiPost("/auth/reset", body);
             if (!response.ok){
                 setError("パスワードリセットのメール送信に失敗しました")
