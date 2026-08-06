@@ -5,7 +5,7 @@ import { useState } from "react"
 import { apiPost } from "@/lib/api"
 import { Loader2 } from "lucide-react"
 
-type ResetRequest = {
+type body = {
     email: string;
 };
 
@@ -17,6 +17,7 @@ function sleep(ms: number) {
 export default function ResetPage() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false); // 通信中かどうか
+    const [success, setSuccess] = useState(false); // 送信成功かどうか
 
     async function handleSubmit(formData: FormData) {
         const email = formData.get("email") as string;
@@ -29,10 +30,37 @@ export default function ResetPage() {
 
         setIsLoading(true); // 通信開始、ぐるぐる表示ON
         try {
-            await sleep(1000); // 1秒待つ（実際のAPI呼び出しの代わり）
+            const body: body = { email };
+            const response = await apiPost("/auth/reset", body);
+            if (!response.ok){
+                setError("パスワードリセットのメール送信に失敗しました")
+                alert("パスワードリセットのメール送信に失敗しました")
+            } else {
+                setSuccess(true) // 1秒待つ（実際のAPI呼び出しの代わり）
+            }
+
         } finally {
             setIsLoading(false); // 成功・失敗どちらでも、ここでぐるぐる表示OFF
         }
+    }
+
+    if (isLoading) {
+        return (
+            <div>
+                <h1 className="text-2xl font-bold mb-4">パスワードリセット</h1>
+                <p>読み込み中...</p>
+            </div>
+        )
+    }
+
+    if (success) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen gap-3 text-gray-500" >
+                <h1 className="text-2xl font-bold mb-4">パスワードリセット</h1>
+                <p>パスワードリセットのメールを送信しました。</p>
+                <a href="/login" className="text-blue-500 hover:underline">ログインページへ</a>
+            </div>
+        )
     }
 
     return (
