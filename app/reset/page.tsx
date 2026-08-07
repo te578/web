@@ -29,7 +29,7 @@ export default function ResetPage() {
             const response = await apiPost("/auth/reset", body);
             if (!response.ok){
                 setError("パスワードリセットのメール送信に失敗しました")
-                alert("パスワードリセットのメール送信に失敗しました")
+
             } else {
                 setSuccess(true)
             }
