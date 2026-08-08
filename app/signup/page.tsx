@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { apiPost }  from "@/lib/api";
 import { setURL } from "@/lib/api";
+import { Label } from "@/components/ui/label";
 
 type SignupReq = {
     username: string;
@@ -71,19 +72,19 @@ export default function SignupPage() {
             <form action={handleSubmit} noValidate className="flex flex-col gap-4 bg-white p-8 rounded shadow-md w-96 rounded-lg">
                 <h1 className="text-2xl font-bold">新規作成</h1>
                 <div className="flex flex-col gap-1">
-                    <p>ユーザー名</p>
+                    <Label htmlFor="username">ユーザー名</Label>
                     <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} className="border rounded"/>
                 </div>
                 <div className="flex flex-col gap-1">
-                    <p>メールアドレス</p>
+                    <Label htmlFor="email">メールアドレス</Label>
                     <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border rounded"/>
                 </div>
                 <div className="flex flex-col gap-1">
-                    <p>パスワード</p>
+                    <Label htmlFor="password">パスワード</Label>
                     <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border rounded"/>
                 </div>
                 <div className="flex flex-col gap-1">
-                    <p>確認用パスワード</p>
+                    <Label htmlFor="confirmPassword">確認用パスワード</Label>
                     <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="border rounded"/>
                 </div>
                 {error && <p className="text-red-500">{error}</p>}
