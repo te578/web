@@ -2,7 +2,7 @@
 
 import { Label } from "@/components/ui/label";
 import { useState } from "react"
-import { apiPost } from "@/lib/api"
+import { apiPost } from "@/lib/apiclient"
 import { Loader2 } from "lucide-react"
 
 type ResetRequest = {

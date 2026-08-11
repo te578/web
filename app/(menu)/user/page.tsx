@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Home } from "lucide-react"
-import { apiGet } from "@/lib/api"
+import { apiGet } from "@/lib/apiclient"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 // APIから返ってくるユーザー情報の型（仮）
