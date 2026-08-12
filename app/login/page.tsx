@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { apiPost, setURL } from "@/lib/api"
+import { apiPost } from "@/lib/apiclient"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -22,7 +22,6 @@ export default function LoginPage() {
   async function handleSubmit(formData: FormData) {
     const email = formData.get("email") as string
     const password = formData.get("password") as string
-    setURL();
 
     if (!email || !password) {
       setError("メールアドレスとパスワードを入力してください")
@@ -33,7 +32,7 @@ export default function LoginPage() {
 
     try {
       setIsLoading(true)
-      const response = await apiPost("/auth/login", body)
+      const response = await apiPost("/api/auth/login", body)
       const data = await response.json();
       if (response.ok) {
         // ログイン成功時の処理

@@ -2,8 +2,7 @@
 
 import React from "react";
 import { useState } from "react";
-import { apiPost }  from "@/lib/api";
-import { setURL } from "@/lib/api";
+import { apiPost }  from "@/lib/apiclient";
 import { Label } from "@/components/ui/label";
 
 type SignupReq = {
@@ -22,7 +21,6 @@ export default function SignupPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
 
     async function handleSubmit(formData: FormData) {
-        setURL();
         const username = formData.get("username") as string;
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
