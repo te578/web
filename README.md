@@ -52,11 +52,16 @@ app/
 │   └── user/       # ユーザーページ
 ├── login/        # ログイン画面
 ├── signup/       # サインアップ画面
-└── reset/        # パスワードリセット画面
+├── reset/        # パスワードリセット画面
+└── api/auth/     # BFF用のRoute Handler（ブラウザとバックエンドの間を中継）
 
 components/
 ├── ui/           # shadcn/ui由来の共通部品
 └── Loading.tsx   # 共通のローディング画面
+
+lib/
+├── apiclient.ts  # ブラウザからBFF(Route Handler)を呼ぶ処理
+└── apibackend.ts # サーバー同士でバックエンドAPIを呼ぶ処理
 ```
 
 ## 工夫した点・学んだこと
@@ -64,3 +69,4 @@ components/
 - ログイン前（`login` / `signup` / `reset`）とログイン後（`(menu)`）の画面をルートグループで分け、ログイン後の画面だけ共通のヘッダー・サイドメニューを表示するようにした
 - Tailwind CSSで、ヘッダー・サイドメニュー・本文をflexboxで組み合わせたレイアウトを実装した
 - フォーム送信は`onSubmit` + `e.preventDefault()`方式を採用し、送信中は`isLoading`で入力・ボタンを無効化しつつスピナーを表示するようにした
+- ログインAPIはBFF（Backend For Frontend）構成にし、ブラウザから直接バックエンドを叩かず、Next.jsのRoute Handler(`app/api/auth/login`)を経由するようにした
