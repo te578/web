@@ -4,7 +4,6 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { apiPost } from "@/lib/apiclient"
-import { setAccessToken } from "@/lib/authToken"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -36,8 +35,8 @@ export default function LoginPage() {
       const response = await apiPost("/api/auth/login", body)
       const data = await response.json();
       if (response.ok) {
-        // ログイン成功時の処理（accessTokenはメモリ上に保持する。refreshTokenはhttpOnly Cookieでブラウザが自動管理）
-        setAccessToken(data.accessToken);
+        // ログイン成功時の処理
+        sessionStorage.setItem("AuthToken", data.token);
         router.push("/dashboard"); // ログイン後にリダイレクトするページに変更してください
 
       } else if (response.status === 401) {
