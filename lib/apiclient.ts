@@ -1,3 +1,5 @@
+import { getAccessToken } from "@/lib/authToken"
+
 export async function apiGet(url: string) {
   const response = await fetch(url, {
     method: "GET",
@@ -17,7 +19,7 @@ export async function apiPost(url: string, body: object) {
     response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json",
-                 "AuthToken": sessionStorage.getItem("AuthToken") ?? ""
+                 "AuthToken": getAccessToken() ?? ""
        },
       body: JSON.stringify(body)
     });
