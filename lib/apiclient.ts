@@ -1,5 +1,6 @@
 import { getAccessToken } from "@/lib/authToken"
 
+// GETリクエストを送信する関数
 export async function apiGet(url: string) {
   const response = await fetch(url, {
     method: "GET",
@@ -9,9 +10,7 @@ export async function apiGet(url: string) {
   return response;
 }
 
-
-
-
+// POSTリクエストを送信する関数
 export async function apiPost(url: string, body: object) {
   let response;
 
@@ -35,3 +34,5 @@ export async function apiPost(url: string, body: object) {
 
   return response;
 }
+
+
