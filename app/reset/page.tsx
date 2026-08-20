@@ -26,7 +26,7 @@ export default function ResetPage() {
         setIsLoading(true); // 通信開始、ぐるぐる表示ON
         try {
             const body: ResetRequest = { email };
-            const response = await apiPost("/auth/reset", body);
+            const response = await apiPost("/api/auth/reset", body);
             if (!response.ok){
                 setError("パスワードリセットのメール送信に失敗しました")
 

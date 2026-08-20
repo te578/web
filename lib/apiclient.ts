@@ -26,7 +26,7 @@ export async function apiPost(url: string, body: object) {
   }else {
     response = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json",
+      headers: { "Content-Type": "application/json"
        },
       body: JSON.stringify(body)
     });
@@ -35,4 +35,12 @@ export async function apiPost(url: string, body: object) {
   return response;
 }
 
-
+export async function apiDelete(url: string, body: object) {
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  
+  return response;
+}
