@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
-import { callBackend } from "@/lib/apibackend"
+import { backendPost } from "@/lib/apibackend"
 
 export async function POST(request: NextRequest) {
   const body = await request.json()
-  const backendResponse = await callBackend(request, "/api/auth/login", body)
+  const backendResponse = await backendPost(request, "/api/auth/login", body)
 
   if (!backendResponse.ok) {
     const errorBody = await backendResponse.json()
