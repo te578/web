@@ -14,7 +14,7 @@ export async function apiGet(url: string) {
 export async function apiPost(url: string, body: object) {
   let response;
 
-  if (!((url === "/api/auth/login") || (url === "/api/auth/reset") || (url === "/api/auth/register"))) {
+  if (!((url === "/api/auth/login") || (url === "/api/auth/reset") || (url === "/api/auth/reset/confirm") || (url === "/api/auth/register"))) {
     response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json",
