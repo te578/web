@@ -79,6 +79,7 @@ app/
 ├── login/        # ログイン画面
 ├── signup/       # サインアップ画面
 ├── reset/        # パスワードリセット画面
+│   └── confirm/    # 新しいパスワード入力画面
 └── api/auth/     # BFF用のRoute Handler(ブラウザとバックエンドの間を中継)
 
 components/
