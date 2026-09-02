@@ -16,8 +16,7 @@
 
 ログイン機能を備えたWebアプリのフロントエンドです。ログイン・サインアップ・パスワードリセットができるアカウント機能と、ログイン後に表示されるダッシュボード画面を実装しています。
 
-- デモURL: [https://web-indol-three-20.vercel.app](https://web-indol-three-20.vercel.app)
-- デモURL(独自ドメイン): [https://sun.te578.me](https://sun.te578.me)
+- フロント: [https://sun.te578.me](https://sun.te578.me)
 - バックエンド: [portfolio-backend](https://github.com/te578/portfolio-backend)
 
 ## 使用技術
