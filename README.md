@@ -16,8 +16,7 @@
 
 ログイン機能を備えたWebアプリのフロントエンドです。ログイン・サインアップ・パスワードリセットができるアカウント機能と、ログイン後に表示されるダッシュボード画面を実装しています。
 
-- デモURL: [https://web-indol-three-20.vercel.app](https://web-indol-three-20.vercel.app)
-- デモURL(独自ドメイン): [https://sun.te578.me](https://sun.te578.me)
+- フロント: [https://sun.te578.me](https://sun.te578.me)
 - バックエンド: [portfolio-backend](https://github.com/te578/portfolio-backend)
 
 ## 使用技術
@@ -64,7 +63,7 @@ npm run dev:staging   # ステージング環境に接続
 
 ## 機能
 
-- ログイン / サインアップ / パスワードリセット(メール送信APIと連携)
+- ログイン / サインアップ / パスワードリセット(メール送信APIと連携、新しいパスワードの設定まで対応)
 - ダッシュボード表示
 - ユーザーページ(アバター画像のプレビュー変更、名前・メールアドレス表示)
 - 通信中のローディング表示(ボタンのスピナー、画面全体のオーバーレイ)
@@ -79,6 +78,7 @@ app/
 ├── login/        # ログイン画面
 ├── signup/       # サインアップ画面
 ├── reset/        # パスワードリセット画面
+│   └── confirm/    # 新しいパスワード入力画面
 └── api/auth/     # BFF用のRoute Handler(ブラウザとバックエンドの間を中継)
 
 components/
