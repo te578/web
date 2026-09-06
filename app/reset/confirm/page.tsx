@@ -43,6 +43,16 @@ export default function ConfirmPage() {
         }
     }
 
+    if (!token) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen gap-3 text-gray-500">
+                <h1 className="text-2xl font-bold mb-4">新しいパスワードを設定</h1>
+                <p>リンクが無効です。もう一度パスワードリセットをお試しください。</p>
+                <a href="/reset" className="text-blue-500 hover:underline">パスワードリセットへ</a>
+            </div>
+        )
+    }
+
     if (success) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen gap-3 text-gray-500">
