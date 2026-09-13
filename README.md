@@ -109,3 +109,4 @@ lib/
 - フォーム送信は`onSubmit` + `e.preventDefault()`方式を採用し、送信中は`isLoading`で入力・ボタンを無効化しつつスピナーを表示するようにした
 - ログインAPIはBFF(Backend For Frontend)構成にし、ブラウザから直接バックエンドを叩かず、Next.jsのRoute Handler(`app/api/auth/login`)を経由するようにした
 - アクセストークンはメモリ上のみで保持し、リフレッシュトークンはhttpOnly Cookieにすることで、XSSによるトークン漏洩リスクを下げた
+- パスワードリセットの新パスワード入力画面はURLのクエリパラメータ(`token`)が無い場合にフォームを表示せず、リンク切れ用のメッセージを表示するようにした
